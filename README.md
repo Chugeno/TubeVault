@@ -4,6 +4,8 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
+TubeVault es una página estática que actúa como un servidor multimedia, permitiéndote acceder y organizar tus videos no listados de YouTube en una interfaz similar a servicios como Plex o Jellyfin. Con TubeVault, puedes crear tu propia colección de películas, series y videos personales, accediendo a ellos de manera fácil y rápida.
+
 ## ✨ Características
 
 🎯 **Organización Inteligente**
