@@ -42,6 +42,7 @@ TubeVault es una página estática que actúa como un servidor multimedia, permi
 
 En `scripts/config.js`:
 
+'''
 const CONFIG = {
     youtubeApiKey: 'TU_API_KEY_DE_YOUTUBE',
     channelId: 'TU_ID_DE_CANAL',
@@ -52,7 +53,7 @@ const CONFIG = {
         "VIDEO_ID_2"
     ]
 };
-
+'''
 
 ## 📝 Uso
 
