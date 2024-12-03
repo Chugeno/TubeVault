@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TubeVault - Your Private YouTube Collection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="layout">
+        <nav class="sidebar">
+            <div class="search-container">
+                <h1 class="app-title">TubeVault</h1>
+                <p class="app-subtitle">Your Private YouTube Collection</p>
+                <label class="search-label">BUSCAR</label>
+                <input type="search" id="searchBar" placeholder="Título, director, actor...">
+            </div>
+            <div class="nav-items">
+                <button class="nav-item active">Todo</button>
+                <button class="nav-item">Películas</button>
+                <button class="nav-item">Series</button>
+                <button class="nav-item">Mis Videos</button>
+            </div>
+        </nav>
+        <main class="main-content">
+            <div class="content-grid" id="videoGrid"></div>
+        </main>
+    </div>
+
+    <div id="playerModal" class="modal">
+        <div class="modal-content">
+            <div id="player"></div>
+            <div id="videoInfo"></div>
+        </div>
+    </div>
+
+    <script src="scripts/config.js"></script>
+    <script src="scripts/youtube-api.js"></script>
+    <script src="scripts/tmdb-api.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html> 
