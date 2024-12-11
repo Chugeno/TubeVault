@@ -51,8 +51,8 @@ TubeVault es una página estática que actúa como un servidor multimedia, permi
        ```
      - En "URI de redireccionamiento autorizados" agrega:
        ```
-       http://localhost:8000
-       http://127.0.0.1:8000
+       http://localhost:8000/oauth2callback
+       http://127.0.0.1:8000/oauth2callback
        ```
 
 #### TMDB API

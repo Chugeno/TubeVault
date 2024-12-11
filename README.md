@@ -51,8 +51,8 @@ TubeVault is a static webpage that acts as a media server, allowing you to acces
        ```
      - In "Authorized redirect URIs" add:
        ```
-       http://localhost:8000
-       http://127.0.0.1:8000
+       http://localhost:8000/oauth2callback
+       http://127.0.0.1:8000/oauth2callback
        ```
 
 #### TMDB API
