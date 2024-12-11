@@ -1,106 +1,160 @@
 # 🎬 TubeVault
 > Your Private YouTube Collection
 
+*Read this in [English](README.md) | [Español](README.es.md)*
+
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
-TubeVault es una página estática que actúa como un servidor multimedia, permitiéndote acceder y organizar tus videos no listados de YouTube en una interfaz similar a servicios como Plex o Jellyfin. Con TubeVault, puedes crear tu propia colección de películas, series y videos personales, accediendo a ellos de manera fácil y rápida.
+TubeVault is a static webpage that acts as a media server, allowing you to access and organize your YouTube videos in an interface similar to services like Plex or Jellyfin. With TubeVault, you can create your own collection of movies, series, and personal videos, accessing them easily and quickly.
 
-## ✨ Características
+## ✨ Features
 
-🎯 **Organización Inteligente**
-- Películas, Series y Videos Personales
-- Búsqueda por título, director o actores
-- Metadata rica (director, actores, sinopsis)
+🎯 **Smart Organization**
+- Movies, Series and Personal Videos
+- Search by title, director, or actors
+- Rich metadata (director, actors, synopsis)
 
-🎨 **Interfaz Moderna**
-- Diseño responsive
-- Pósters de TMDB
-- Interfaz estilo streaming
+🎨 **Modern Interface**
+- Responsive design
+- TMDB posters
+- Streaming-style interface
 
-💾 **Optimización**
-- Caché local
-- Carga lazy de imágenes
-- Actualización inteligente
+💾 **Optimization**
+- Local cache
+- Lazy image loading
+- Automatic updates
 
-## 🚀 Inicio Rápido
+## 🛠️ Installation and Setup
 
-### 1️⃣ APIs Necesarias
+### 1. Prerequisites
 
-**YouTube Data API v3**
-1. Ve a [Google Cloud Console](https://console.cloud.google.com)
-2. Crea un nuevo proyecto
-3. Habilita YouTube Data API v3
-4. Crea credenciales (API Key)
+**Python**
+- Python 3.x is required
+- Download from [python.org](https://www.python.org/downloads/) if not installed
+- Verify installation with `python3 --version`
 
-**TMDB API**
-1. Crea una cuenta en [TMDB](https://www.themoviedb.org/signup)
-2. Ve a la configuración de API
-3. Solicita una API Key
+### 2. API Configuration
 
-### 2️⃣ Configuración
+#### YouTube Data API v3
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Create a new project
+3. Enable YouTube Data API v3
+4. In the "Credentials" panel:
+   - Create an API Key
+   - Configure OAuth 2.0:
+     - Create an OAuth 2.0 Client ID
+     - In "Authorized JavaScript origins" add:
+       ```
+       http://localhost:8000
+       http://127.0.0.1:8000
+       ```
+     - In "Authorized redirect URIs" add:
+       ```
+       http://localhost:8000
+       http://127.0.0.1:8000
+       ```
 
-En `scripts/config.js`:
+#### TMDB API
+1. Create an account at [TMDB](https://www.themoviedb.org/signup)
+2. Go to API settings
+3. Request an API Key
 
-```
+### 3. Project Configuration
+
+1. Clone the repository
+2. Rename `scripts/config.example.js` to `scripts/config.js`
+3. In `scripts/config.js`, replace the values with your keys:
+```javascript
 const CONFIG = {
-    youtubeApiKey: 'TU_API_KEY_DE_YOUTUBE',
-    channelId: 'TU_ID_DE_CANAL',
-    tmdbApiKey: 'TU_API_KEY_DE_TMDB',
-    updateInterval: 3600000,
-    unlistedVideos: [
-        "VIDEO_ID_1",
-        "VIDEO_ID_2"
-    ]
+    youtubeApiKey: 'YOUR_YOUTUBE_API_KEY',     // From Google Cloud Console
+    youtubeClientId: 'YOUR_YOUTUBE_CLIENT_ID', // From Google Cloud Console
+    channelId: 'YOUR_CHANNEL_ID',             // Your YouTube channel ID
+    tmdbApiKey: 'YOUR_TMDB_API_KEY',         // From TMDB
+    updateInterval: 3600000,                 // Update interval in ms
+    unlistedVideos: []                      // No need to modify
 };
 ```
 
-## 📝 Uso
+### 4. Run the Server
 
-### Videos Públicos
-1. Súbelos normalmente a YouTube
-2. Usa el formato de descripción adecuado
-3. Aparecerán en "Mis Videos"
+1. Open a terminal in the project directory
+2. Run the command:
+   ```bash
+   python3 -m http.server 8000
+   ```
+3. Open your browser and go to `http://localhost:8000`
 
-### Videos No Listados
-1. Súbelos como "no listados"
-2. Usa el formato de descripción
-3. Agrega el ID en config.js
+## 📝 Usage and Video Format
 
-## ⚠️ Consideraciones
+### Description Format
+For TubeVault to properly process your videos, use this format in the description:
 
-- Los videos no listados necesitan configuración manual
-- YouTube puede eliminar videos que infrinjan derechos
-- API tiene límite de 10,000 unidades diarias
-- Usar con contenido propio o autorizado
+#### For Movies
+```
+[DIRECTOR: Director Name]
+[ACTORS: Actor 1, Actor 2, Actor 3]
+[SYNOPSIS: Movie description]
+```
 
-## 🛠️ Instalación
+#### For Series
+```
+[SEASON: 1]
+[UNIT: 3]
+[EPISODE: 5]
+[SYNOPSIS: Episode description]
+```
 
-1. Clona el repositorio
-2. Configura las API keys
-3. Abre index.html
+#### For Courses
+```
+[UNIT: 2]
+[EPISODE: 1]
+[SYNOPSIS: Lesson description]
+```
 
-## 🤖 Desarrollo con IA
+### Format Notes
+- Tags must be in UPPERCASE and between brackets
+- Synopsis can contain multiple lines
+- For series and courses:
+  - SEASON is optional
+  - UNIT groups episodes into sections
+  - EPISODE determines playback order
 
-Este proyecto fue desarrollado con la asistencia de Claude (Anthropic). Como tal:
-- El código puede optimizarse
-- Pueden existir mejores prácticas
-- Se aceptan mejoras y sugerencias
+## ⚠️ Considerations
 
-## 🤝 Contribuciones
+- YouTube API has a daily limit of 10,000 units
+- Use with your own or authorized content
+- Private videos update automatically
 
-¡Las contribuciones son bienvenidas!
-- 🐛 Reporta bugs
-- 💡 Sugiere mejoras
-- 🔧 Envía pull requests
+## 🤖 AI Development
 
-## 📄 Licencia
+This project was developed with assistance from Claude (Anthropic). As such:
+- Code can be optimized
+- Better practices may exist
+- Improvements and suggestions are welcome
 
-MIT License - ver [LICENSE.md](LICENSE.md)
+## ☕ Support the Project
 
-## ⚖️ Descargo de Responsabilidad
+If you find this project useful and want to support its development:
 
-Este proyecto es para uso personal y educativo. No fomentes la infracción de derechos de autor.
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg?style=flat-square&logo=buy-me-a-coffee)](https://buymeacoffee.com/chugeno)
+
+Your support helps maintain and improve TubeVault! 
+
+## 🤝 Contributing
+
+Contributions are welcome!
+- 🐛 Report bugs
+- 💡 Suggest improvements
+- 🔧 Submit pull requests
+
+## 📄 License
+
+MIT License - see [LICENSE.md](LICENSE.md)
+
+## ⚖️ Disclaimer
+
+This project is for personal and educational use. Do not encourage copyright infringement.
 
 ---
-Hecho con ❤️ usando YouTube Data API y TMDB
+Made with ❤️ using YouTube Data API and TMDB

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TubeVault - Your Private YouTube Collection</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <div class="layout">
@@ -12,14 +13,25 @@
             <div class="search-container">
                 <h1 class="app-title">TubeVault</h1>
                 <p class="app-subtitle">Your Private YouTube Collection</p>
-                <label class="search-label">BUSCAR</label>
+                <label for="searchBar">BUSCAR</label>
                 <input type="search" id="searchBar" placeholder="Título, director, actor...">
             </div>
-            <div class="nav-items">
+            <div class="nav-items">                
                 <button class="nav-item active">Todo</button>
-                <button class="nav-item">Películas</button>
+                <!-- <button class="nav-item">Películas</button>
                 <button class="nav-item">Series</button>
-                <button class="nav-item">Mis Videos</button>
+                <button class="nav-item">Mis Videos</button>                 -->
+            </div>
+            <div class="quota-container">
+                <h3>Cuota de API</h3>
+                <div class="quota-info">
+                    <div id="quotaMessage" class="quota-message hidden">
+                        ⚠️ Límite de API excedido. Intenta mañana nuevamente.
+                    </div>
+                    <div class="quota-text">
+                        <span id="quotaUsed">0</span> peticiones realizadas
+                    </div>
+                </div>
             </div>
         </nav>
         <main class="main-content">
@@ -34,9 +46,26 @@
         </div>
     </div>
 
+    <div id="oauth-callback"></div>
+
+    <script src="https://accounts.google.com/gsi/client"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    
     <script src="scripts/config.js"></script>
     <script src="scripts/youtube-api.js"></script>
     <script src="scripts/tmdb-api.js"></script>
     <script src="scripts/main.js"></script>
+
+    <script>
+    // Manejar el callback de OAuth
+    if (window.location.pathname === '/oauth2callback') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        if (code) {
+            // Procesar el código y redirigir
+            window.location.href = '/';
+        }
+    }
+    </script>
 </body>
 </html> 
