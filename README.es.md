@@ -67,10 +67,10 @@ TubeVault es una página estática que actúa como un servidor multimedia, permi
 3. En `scripts/config.js`, reemplaza los valores con tus claves:
 ```javascript
 const CONFIG = {
-    youtubeApiKey: 'TU_YOUTUBE_API_KEY',     // De Google Cloud Console
-    youtubeClientId: 'TU_YOUTUBE_CLIENT_ID', // De Google Cloud Console
+    youtubeApiKey: 'TU_YOUTUBE_API_KEY',     // API Key de YouTube de Google Cloud Console
+    oauthClientId: 'TU_OAUTH_CLIENT_ID',     // ID de Cliente OAuth 2.0 de Google Cloud Console
     channelId: 'TU_CHANNEL_ID',             // ID de tu canal de YouTube
-    tmdbApiKey: 'TU_TMDB_API_KEY',         // De TMDB
+    tmdbApiKey: 'TU_TMDB_API_KEY',         // API Key de TMDB
     updateInterval: 3600000,               // Intervalo de actualización en ms
     unlistedVideos: []                    // No es necesario modificar
 };

@@ -67,10 +67,10 @@ TubeVault is a static webpage that acts as a media server, allowing you to acces
 3. In `scripts/config.js`, replace the values with your keys:
 ```javascript
 const CONFIG = {
-    youtubeApiKey: 'YOUR_YOUTUBE_API_KEY',     // From Google Cloud Console
-    youtubeClientId: 'YOUR_YOUTUBE_CLIENT_ID', // From Google Cloud Console
+    youtubeApiKey: 'YOUR_YOUTUBE_API_KEY',     // YouTube API Key from Google Cloud Console
+    oauthClientId: 'YOUR_OAUTH_CLIENT_ID',     // OAuth 2.0 Client ID from Google Cloud Console
     channelId: 'YOUR_CHANNEL_ID',             // Your YouTube channel ID
-    tmdbApiKey: 'YOUR_TMDB_API_KEY',         // From TMDB
+    tmdbApiKey: 'YOUR_TMDB_API_KEY',         // TMDB API Key
     updateInterval: 3600000,                 // Update interval in ms
     unlistedVideos: []                      // No need to modify
 };

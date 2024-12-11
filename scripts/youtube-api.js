@@ -1,7 +1,7 @@
 class YouTubeAPI {
     constructor(apiKey, channelId) {
-        this.apiKey = apiKey;
-        this.clientId = CONFIG.youtubeClientId;
+        this.apiKey = CONFIG.youtubeApiKey;
+        this.clientId = CONFIG.oauthClientId;
         this.channelId = channelId;
         this.videoCache = new Map();
         this.accessToken = null;
